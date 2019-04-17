@@ -10,59 +10,59 @@
         android:id="@+id/editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginLeft="84dp"
+        android:layout_marginStart="84dp"
         android:ems="10"
         android:inputType="textPassword"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="158dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="LabelFor,MissingConstraints"
+        tools:layout_editor_absoluteY="158dp" />
 
     <EditText
         android:id="@+id/editText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginLeft="84dp"
+        android:layout_marginStart="84dp"
         android:ems="10"
         android:inputType="textPassword"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="42dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="LabelFor,MissingConstraints"
+        tools:layout_editor_absoluteY="46dp" />
 
     <EditText
         android:id="@+id/editText3"
         android:layout_width="92dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginLeft="144dp"
+        android:layout_marginStart="144dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Password"
+        android:text="@string/password_title"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="111dp" />
+        tools:ignore="LabelFor,MissingConstraints"
+        tools:layout_editor_absoluteY="112dp" />
 
     <EditText
         android:id="@+id/editText4"
         android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginLeft="128dp"
+        android:layout_marginStart="128dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Network Login"
+        android:text="@string/network_login_title"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
+        tools:ignore="LabelFor,MissingConstraints"
         tools:layout_editor_absoluteY="0dp" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login"
+        android:text="@string/login_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="239dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="239dp" />
 </android.support.constraint.ConstraintLayout>
