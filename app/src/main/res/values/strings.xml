@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AUTPRIME</string>
+    <string name="app_name">Welcome to AUTPRIME</string>
     <string name="network_login_title">Network Login</string>
     <string name="password_title">Password</string>
     <string name="login_title">Login</string>
