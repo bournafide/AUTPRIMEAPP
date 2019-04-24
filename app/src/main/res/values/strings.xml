@@ -3,4 +3,7 @@
     <string name="network_login_title">Network Login</string>
     <string name="password_title">Password</string>
     <string name="login_title">Login</string>
+    <string name="hint_title_one">Input username here</string>
+    <string name="hint_title_two">Input password here</string>
+    <string name="welcome_to_autprime">Welcome to AutPrime</string>
 </resources>
