@@ -1,6 +1,6 @@
 package com.example.alison.autprime;
-//when user logs in successfully, they will be directed to the homepage (Activity2.java)
-//no security measures have been implemented yet
+//main activity contains login activity for the app
+//so when app launches, a login screen is the first thing the user will see
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,16 +9,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
-    private Button login_button;
-    private EditText username, password;
+public class MainActivity extends AppCompatActivity{
+    Button login_button;
+    EditText username, password;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        username = findViewById(R.id.editText2);
-        password = findViewById(R.id.editText);
-        login_button = findViewById(R.id.button);
+        username = findViewById(R.id.placeUsername);
+        password = findViewById(R.id.placePassword);
+        login_button = findViewById(R.id.loginButton);
         login_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -28,11 +28,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    //simple validating test for users network login and password
+    //it does not however, validate actual users network login and password stored in Microsoft Outlook
     public void validate(String username, String password){
-        if(username.equals("user") && password.equals("pass")){
+        if(!(username.isEmpty()) && !(password.isEmpty())){
             //print out non-error message and startup the next activity after login successful
             Toast.makeText(getApplicationContext(),"Login successful",Toast.LENGTH_SHORT).show();
+            EditText nameText = findViewById(R.id.placeUsername);
+            String text = nameText.getText().toString();
             Intent intent = new Intent(this, Activity2.class);
+            intent.putExtra("Username", text);
             startActivity(intent);
         }
         else{
