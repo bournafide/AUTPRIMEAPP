@@ -1,6 +1,7 @@
 package com.example.alison.autprime;
 //main activity contains login activity for the app
 //so when app launches, a login screen is the first thing the user will see
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -28,6 +29,11 @@ public class MainActivity extends AppCompatActivity{
     public void validate(String username, String password){
         if(!(username.isEmpty()) && !(password.isEmpty())){
             Toast.makeText(getApplicationContext(),"Login successful",Toast.LENGTH_SHORT).show();
+            EditText usernameText = findViewById(R.id.placeHolderUsername);
+            String text = usernameText.getText().toString();
+            Intent intent = new Intent(this,HomepageActivity.class);
+            intent.putExtra("Username",text);
+            startActivity(intent);
         }
         else{
             Toast.makeText(getApplicationContext(),"Invalid Login",Toast.LENGTH_SHORT).show();
