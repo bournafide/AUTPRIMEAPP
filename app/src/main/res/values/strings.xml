@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">AUTPrimeCampusMap</string>
+    <string name="map_key" translatable="false">AIzaSyAMa_rT09ZK1d6scS-sJo0sdHtKvx3tlXA</string>
+</resources>
