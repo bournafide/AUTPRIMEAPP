@@ -1,18 +1,8 @@
 <resources>
     <string name="app_name">Welcome to AUTPRIME</string>
-    <string name="network_login_title">Network Login</string>
-    <string name="password_title">Password</string>
-    <string name="login_title">Login</string>
-    <string name="hint_title_one">Input username here</string>
-    <string name="hint_title_two">Input password here</string>
-    <string name="welcome_message">Welcome to AutPrime</string>
-    <string name="user_text_title">User</string>
-    <string name="question_user_text">What would like to do now?</string>
-    <string name="username_goes_here_text">username goes here</string>
-    <string name="coursesButton">Courses</string>
-    <string name="gradesButton">Grades</string>
-    <string name="mapButton">Map</string>
-    <string name="notesButton">Notes</string>
     <string name="network_login_textView">Network Login</string>
-    <string name="passwordTextView">Password</string>
+    <string name="username_hint">Input username here</string>
+    <string name="password_textView">Password</string>
+    <string name="password_hint">Input password here</string>
+    <string name="loginButton_text">Login</string>
 </resources>
