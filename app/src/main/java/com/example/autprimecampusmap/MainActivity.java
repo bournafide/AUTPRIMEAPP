@@ -1,9 +1,12 @@
 package com.example.autprimecampusmap;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Camera;
 import android.location.Location;
+import android.net.Uri;
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
@@ -17,18 +20,32 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
-public class MainActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMyLocationClickListener
+import java.net.URI;
+import java.net.URL;
+
+public class MainActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMyLocationClickListener, GoogleMap.OnInfoWindowClickListener
 {
     Location currentLocation;
     FusedLocationProviderClient fusedLocationProviderClient;
     private static final int REQUEST_CODE = 101;
     private GoogleMap mMap;
+
+    private static final LatLng AUTSouthCampus = new LatLng(-36.984360, 174.879210);
+    private Marker SouthCampus;
+
+    private static final LatLng AUTCityCampus = new LatLng(-36.852631, 174.766785);
+    private Marker CityCampus;
+
+    private static final LatLng AUTNorthCampus = new LatLng(-36.792930, 174.747960);
+    private Marker NorthCampus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -42,7 +59,8 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
 
     private void fetchLastLocation()
     {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
+        {
             ActivityCompat.requestPermissions(this, new String[]
                     {Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE);
             return;
@@ -50,6 +68,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
 
         Task<Location> task = fusedLocationProviderClient.getLastLocation();
         task.addOnSuccessListener(new OnSuccessListener<Location>()
+
         {
             @Override
             public void onSuccess(Location location)
@@ -70,40 +89,46 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
     {
         mMap = googleMap;
 
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
+        //Adds campus markers to map
+        addMarkersToMap();
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
+        {
             return;
         }
 
         mMap.setMyLocationEnabled(true);
+
+        //Setting listeners for events
         mMap.setOnMyLocationButtonClickListener(this);
         mMap.setOnMyLocationClickListener(this);
+        mMap.setOnInfoWindowClickListener(this);
 
-        // Adding a marker on current location and camedra zooms in for current location
+        //Adding a marker on current location and camera zooms in for current location
         LatLng latLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
         MarkerOptions markerOptions = new MarkerOptions().position(latLng).title("My current location");
         googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
         googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 5));
         googleMap.addMarker(markerOptions);
+    }
 
-        // Add a marker in 3 different AUT campus and move the camera
-        LatLng AUTSouthCampus = new LatLng(-36.984360, 174.879210);
-        googleMap.addMarker(new MarkerOptions().position(AUTSouthCampus).title("Marker in AUT south campus"));
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(AUTSouthCampus));
+    private void addMarkersToMap()
+    {
+        // Add a marker in 3 different AUT campuses
+        SouthCampus = mMap.addMarker(new MarkerOptions()
+                .position(AUTSouthCampus)
+                .title("AUT south campus"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(AUTSouthCampus));
 
-        LatLng AUTCityCampus = new LatLng(-36.852631, 174.766785);
-        googleMap.addMarker(new MarkerOptions().position(AUTCityCampus).title("Marker in AUT city campus"));
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(AUTCityCampus));
+        CityCampus = mMap.addMarker(new MarkerOptions()
+                .position(AUTCityCampus)
+                .title("AUT city campus"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(AUTCityCampus));
 
-        LatLng AUTNorthCampus = new LatLng(-36.792930, 174.747960);
-        googleMap.addMarker(new MarkerOptions().position(AUTNorthCampus).title("Marker in AUT north campus"));
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(AUTNorthCampus));
+        NorthCampus = mMap.addMarker(new MarkerOptions()
+                .position(AUTNorthCampus)
+                .title("AUT north campus"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(AUTNorthCampus));
     }
 
     @Override
@@ -130,6 +155,35 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMyLocationClick(@NonNull Location location)
     {
-        Toast.makeText(this, "Current location:\n" + location, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Current location", Toast.LENGTH_LONG).show();
     }
+
+    @Override
+    public void onInfoWindowClick(Marker marker)
+    {
+        if(marker.equals(SouthCampus))
+        {
+            //TODO: open url or image when infowindow clicked
+            //https://www.aut.ac.nz/__data/assets/pdf_file/0008/118925/AUT-campus-map-south.pdf
+        }
+
+        if(marker.equals(CityCampus))
+        {
+            //TODO: open url or image when infowindow clicked
+            //https://www.aut.ac.nz/__data/assets/pdf_file/0011/118919/AUT-campus-map-city.pdf
+        }
+
+        if(marker.equals(NorthCampus))
+        {
+            // TODO: open url or image when infowindow clicked
+            //https://www.aut.ac.nz/__data/assets/pdf_file/0006/118905/AUT-campus-map-north.pdf
+        }
+
+        else
+        {
+            Toast.makeText(this, "Info window clicked", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
 }
