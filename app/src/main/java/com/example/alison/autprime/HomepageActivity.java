@@ -54,8 +54,10 @@ public class HomepageActivity extends AppCompatActivity{
         noteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //intent to redirect user to notes when button is clicked
-                Toast.makeText(getApplicationContext(),"Redirecting to notes",Toast.LENGTH_SHORT).show();
+                //intent to redirect user to listNotes when button is clicked
+                Toast.makeText(getApplicationContext(),"Redirecting to listNotes",Toast.LENGTH_SHORT).show();
+                Intent noteIntent = new Intent(HomepageActivity.this, Notepad.class);
+                startActivity(noteIntent);
             }
         });
     }

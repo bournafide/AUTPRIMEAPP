@@ -4,14 +4,18 @@ package com.example.alison.autprime;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity{
     Button login_button;
     EditText username, password;
+    ListView listNotes;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +29,7 @@ public class MainActivity extends AppCompatActivity{
                 validate(username.getText().toString(),password.getText().toString());
             }
         });
+
     }
     public void validate(String username, String password){
         if(!(username.isEmpty()) && !(password.isEmpty())){
