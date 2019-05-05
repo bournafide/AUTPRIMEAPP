@@ -9,7 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class HomepageActivity extends AppCompatActivity{
-    Button courseBtn, gradeBtn, mapBtn, noteBtn;
+    Button courseBtn, gradeBtn, mapBtn, noteBtn, emailBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,7 +18,7 @@ public class HomepageActivity extends AppCompatActivity{
         gradeBtn = findViewById(R.id.gradeBtnId);
         mapBtn = findViewById(R.id.mapBtnId);
         noteBtn = findViewById(R.id.noteBtnId);
-
+        emailBtn = findViewById(R.id.emailBtnId);
         //retrieve data (ie:username) from login page and display it on the homepage
         Intent intent = getIntent();
         String text = intent.getStringExtra("Username");
@@ -56,6 +56,15 @@ public class HomepageActivity extends AppCompatActivity{
             public void onClick(View view) {
                 //intent to redirect user to notes when button is clicked
                 Toast.makeText(getApplicationContext(),"Redirecting to notes",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        emailBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),"Redirecting to email",Toast.LENGTH_SHORT).show();
+                Intent emailIntent = new Intent(HomepageActivity.this,EmailActivity.class);
+                startActivity(emailIntent);
             }
         });
     }

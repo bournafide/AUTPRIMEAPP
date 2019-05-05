@@ -12,4 +12,5 @@
     <string name="grades_button">Grades</string>
     <string name="maps_button">Maps</string>
     <string name="notes_button">Notes</string>
+    <string name="email_button">Email</string>
 </resources>

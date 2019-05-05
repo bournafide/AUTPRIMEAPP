@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.alison.autprime">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,6 +18,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".HomepageActivity" />
+        <activity android:name=".EmailActivity"></activity>
     </application>
 
 </manifest>
