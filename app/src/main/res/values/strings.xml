@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Welcome to AUTPRIME</string>
+    <string name="network_login_textView">Network Login</string>
+    <string name="username_hint">Input username here</string>
+    <string name="password_textView">Password</string>
+    <string name="password_hint">Input password here</string>
+    <string name="loginButton_text">Login</string>
+    <string name="welcome_to_autprime_textView">Welcome to AutPrime</string>
+    <string name="username_will_go_here_textView">username will go here</string>
+    <string name="what_would_you_like_to_do_now_textView">What would you like to do now?</string>
+    <string name="courses_button">Courses</string>
+    <string name="grades_button">Grades</string>
+    <string name="maps_button">Maps</string>
+    <string name="notes_button">Notes</string>
+</resources>
