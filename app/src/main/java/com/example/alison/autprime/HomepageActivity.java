@@ -32,6 +32,8 @@ public class HomepageActivity extends AppCompatActivity{
             public void onClick(View view) {
                 //intent to redirect user to courses when button is clicked
                 Toast.makeText(getApplicationContext(),"Redirecting to courses",Toast.LENGTH_SHORT).show();
+                Intent courseIntent = new Intent(HomepageActivity.this,CourseActivity.class);
+                startActivity(courseIntent);
             }
         });
 
