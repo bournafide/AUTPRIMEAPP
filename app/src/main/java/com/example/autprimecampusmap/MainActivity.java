@@ -161,31 +161,8 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onInfoWindowClick(Marker marker)
     {
-        if(marker.equals(SouthCampus))
-        {
-            Toast.makeText(this, "south campus clicked", Toast.LENGTH_SHORT).show();
-            //TODO: open url or image when infowindow clicked
-            //https://www.aut.ac.nz/__data/assets/pdf_file/0008/118925/AUT-campus-map-south.pdf
-        }
 
-        if(marker.equals(CityCampus))
-        {
-            Toast.makeText(this, "city campus clicked", Toast.LENGTH_SHORT).show();
-            //TODO: open url or image when infowindow clicked
-            //https://www.aut.ac.nz/__data/assets/pdf_file/0011/118919/AUT-campus-map-city.pdf
-        }
-
-        if(marker.equals(NorthCampus))
-        {
-            Toast.makeText(this, "north campus clicked", Toast.LENGTH_SHORT).show();
-            // TODO: open url or image when infowindow clicked
-            //https://www.aut.ac.nz/__data/assets/pdf_file/0006/118905/AUT-campus-map-north.pdf
-        }
-
-        else
-        {
-            Toast.makeText(this, "Info window clicked", Toast.LENGTH_SHORT).show();
-        }
+        Toast.makeText(this, "Info window clicked", Toast.LENGTH_SHORT).show();
 
     }
 
