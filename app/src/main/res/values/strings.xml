@@ -12,4 +12,5 @@
     <string name="grades_button">Grades</string>
     <string name="maps_button">Maps</string>
     <string name="notes_button">Notes</string>
+    <string name="map_key" translatable="false">AIzaSyAMa_rT09ZK1d6scS-sJo0sdHtKvx3tlXA</string>
 </resources>

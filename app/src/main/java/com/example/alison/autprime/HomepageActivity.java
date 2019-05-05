@@ -48,6 +48,8 @@ public class HomepageActivity extends AppCompatActivity{
             public void onClick(View view) {
                 //intent to redirect user to maps when button is clicked
                 Toast.makeText(getApplicationContext(),"Redirecting to maps",Toast.LENGTH_SHORT).show();
+                Intent mapIntent = new Intent(HomepageActivity.this,MapActivity.class);
+                startActivity(mapIntent);
             }
         });
 
