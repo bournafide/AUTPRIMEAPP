@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".HomepageActivity">
+
+    <!-- display welcome message to user-->
+    <TextView
+        android:id="@+id/welcomeMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/welcome_to_autprime_textView"
+        android:visibility="visible"/>
+
+    <!-- display name of user-->
+    <TextView
+        android:id="@+id/placeHolderUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/welcomeMessage"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/username_will_go_here_textView"
+        android:visibility="visible"/>
+
+    <!-- display a question for user-->
+    <TextView
+        android:id="@+id/question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/placeHolderUsername"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/what_would_you_like_to_do_now_textView"
+        android:visibility="visible"/>
+
+    <!-- display a button to redirect users to their courses -->
+    <Button
+        android:id="@+id/courseBtnId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/question"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/courses_button"
+        android:visibility="visible"/>
+
+    <!-- display a button to redirect users to their grades -->
+    <Button
+        android:id="@+id/gradeBtnId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/question"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/grades_button"
+        android:visibility="visible"/>
+
+    <!-- display a button to redirect users to the campuses maps -->
+    <Button
+        android:id="@+id/mapBtnId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/courseBtnId"
+        android:text="@string/maps_button"
+        android:visibility="visible"/>
+
+    <!-- display a button to redirect users to the notepad -->
+    <Button
+        android:id="@+id/noteBtnId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/gradeBtnId"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/notes_button"
+        android:visibility="visible"/>
+
+    <Button
+        android:id="@+id/emailBtnId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/noteBtnId"
+        android:text="@string/email_button"
+        android:layout_alignParentLeft="true" />
+
+</RelativeLayout>
