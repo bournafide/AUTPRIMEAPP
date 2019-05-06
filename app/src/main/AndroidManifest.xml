@@ -11,13 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light"
         tools:ignore="AllowBackup">
-        <activity
-            android:name=".Note"
-            android:theme="@style/NoActionBar" />
         <activity android:name=".HomepageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -25,6 +21,9 @@
             android:name=".Notepad"
             android:theme="@style/NoActionBar" />
         <activity android:name=".MainActivity" />
+        <activity
+            android:name=".Note"
+            android:theme="@style/NoActionBar" />
     </application>
 
 </manifest>

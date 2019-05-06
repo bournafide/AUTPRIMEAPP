@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -32,18 +33,28 @@ public class Notepad extends AppCompatActivity {
         super.onResume();
 
         npListNotes.setAdapter(null);
+        ArrayList<theNote> notepadList = NoteDatabase.readNotes(getApplicationContext());
 
-        ArrayList<theNote> notepadList = NoteDatabase.readNotes(this);
-
-        if(notepadList == null || notepadList.size() == 0)
+        if(notepadList != null && notepadList.size() > 0)
         {
-            Toast.makeText(this, "No existing saved notes", Toast.LENGTH_SHORT).show();
-            return;
+            NoteAdapter na = new NoteAdapter(this, R.layout.note_list, notepadList);
+            npListNotes.setAdapter(na);
+
+            npListNotes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    //load file as a note for viewing
+                    String file_name = ((theNote) npListNotes.getItemAtPosition(position)).getNDateTime() + NoteDatabase.file_type;
+                    Intent viewNote = new Intent(getApplicationContext(), Note.class);
+                    viewNote.putExtra("NOTE_FILE", file_name);
+                    startActivity(viewNote);
+                }
+            });
         }
         else
         {
-                NoteAdapter na = new NoteAdapter(this, R.layout.note_list, notepadList);
-                npListNotes.setAdapter(na);
+            Toast.makeText(this, "No existing saved notes", Toast.LENGTH_SHORT).show();
+            return;
         }
 
     }

@@ -11,12 +11,6 @@ public class theNote implements Serializable {
     private String nContent;
     private long nDateTime;
 
-    public void theNote(){
-        this.nTitle ="";
-        this.nContent = "";
-        this.nDateTime = 0L;
-    }
-
     public theNote(String title, String content, long created) {
         this.nTitle = title;
         this.nContent = content;
