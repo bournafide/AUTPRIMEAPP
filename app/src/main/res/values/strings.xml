@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Welcome to AUTPRIME</string>
+    <string name="network_login_textView">Network Login</string>
+    <string name="username_hint">Input username here</string>
+    <string name="password_textView">Password</string>
+    <string name="password_hint">Input password here</string>
+    <string name="loginButton_text">Login</string>
+</resources>
