@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -16,7 +18,7 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        username = findViewById(R.id.placeHolderUsername);
+        /*username = findViewById(R.id.placeHolderUsername);
         password = findViewById(R.id.placeHolderPassword);
         login_button = findViewById(R.id.loginButton);
         login_button.setOnClickListener(new View.OnClickListener() {
@@ -24,9 +26,29 @@ public class MainActivity extends AppCompatActivity{
             public void onClick(View view) {
                 validate(username.getText().toString(),password.getText().toString());
             }
-        });
+        });*/
+        WebView simpleWebView = (WebView) findViewById(R.id.simpleWebView);
+
+        simpleWebView.setWebViewClient(new MyWebViewClient());
+
+        String url = "https://blackboard.aut.ac.nz/webapps/login/?action=relogin";
+        simpleWebView.getSettings().setJavaScriptEnabled(true);
+        simpleWebView.loadUrl(url); // load the url on the web view
+
     }
-    public void validate(String username, String password){
+     private class MyWebViewClient extends WebViewClient {
+      @Override
+      public boolean shouldOverrideUrlLoading(WebView view, String url) {
+          view.loadUrl(url);
+          Toast.makeText(MainActivity.this, url, Toast.LENGTH_LONG).show();
+          // load the url
+          view.setVisibility(View.INVISIBLE);
+          Intent homeIntent = new Intent(MainActivity.this,HomepageActivity.class);
+          startActivity(homeIntent);
+          return true;
+      }
+  }
+    /*public void validate(String username, String password){
         if(!(username.isEmpty()) && !(password.isEmpty())){
             Toast.makeText(getApplicationContext(),"Login successful",Toast.LENGTH_SHORT).show();
             EditText usernameText = findViewById(R.id.placeHolderUsername);
@@ -38,5 +60,5 @@ public class MainActivity extends AppCompatActivity{
         else{
             Toast.makeText(getApplicationContext(),"Invalid Login",Toast.LENGTH_SHORT).show();
         }
-    }
+    }*/
 }
