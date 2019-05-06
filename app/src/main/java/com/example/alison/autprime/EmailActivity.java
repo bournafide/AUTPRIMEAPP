@@ -1,5 +1,6 @@
 package com.example.alison.autprime;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,7 +20,11 @@ public class EmailActivity extends AppCompatActivity {
         webSetup.setJavaScriptEnabled(true);
         emailWebView.loadUrl("https://studentmail.aut.ac.nz/");
         emailWebView.setWebViewClient(new WebViewClient());
+
+
     }
+    //public EmailActivity(Context context){}
+
     public class myWebClient extends WebViewClient{
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon){
@@ -40,4 +45,5 @@ public class EmailActivity extends AppCompatActivity {
             super.onBackPressed();
         }
     }
+
 }
